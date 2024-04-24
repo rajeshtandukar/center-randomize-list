@@ -75,3 +75,15 @@ Console output contains information about center allocation run.
     Total remaining capacity across all centers: 190
     Students not assigned: 29
 
+
+## Web Access
+To run on browser use the command
+
+```bash
+$ python app.py   
+```
+
+![Search college's exam centers](https://github.com/rajeshtandukar/center-randomize-list/images/search-college.png)
+![Search college's exam centers list](https://github.com/rajeshtandukar/center-randomize-list/images/college-centers.png)
+![Exam centers list](https://github.com/rajeshtandukar/center-randomize-list/images/exam-centers.png)
+![Exam centers list Googl Map](https://github.com/rajeshtandukar/center-randomize-list/images/center-map.png)

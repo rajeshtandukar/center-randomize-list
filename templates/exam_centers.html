@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block head %} <title>Exam Centers</title> {% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <!-- Heading -->
+            <h3 class="text-center"><u>Grade 12 Examination Centers - 2081 (Kathmandu)</u></h3>
+        <!-- Table List -->
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <table class="table center-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">S.N.</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Cscode</th>
+                        <th scope="col">Capacity<th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in data %}
+                        <tr>
+                            <td scope="row">{{  loop.index}}</td>
+                            <td>{{ item['name'] }}</td>
+                            <td><a href="#" class="address-link" data-lat="{{ item['lat'] }}" data-long="{{ item['long'] }}">{{ item['address'] }}</a></td>
+                            <td>{{ item['cscode'] }}</td>
+                            <td>{{ item['capacity'] }}</td>
+                        </tr>
+                    {% endfor %}
+                    
+                    <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center mt-3">
+                {% for num in range(1, total_pages + 1) %}
+                    <li class="page-item {% if page == num %}active{% endif %}">
+                        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Google Map</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div id="map" style="width: auto;height: 500px;"></div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+    {% endblock %}
+
+
+{% block pagescripts %}
+<script>
+    var lat,lng;
+    $(document).ready(function(){
+        $('.table tbody tr td a').click(function(e){
+            e.preventDefault();
+                
+            lat = $(this).data('lat');
+            lng = $(this).data('long');
+            var firstTdText = $(this).parents('tr').find('td').eq(1).text();
+            $('#exampleModal').find('.modal-title').text(firstTdText)
+            $('#exampleModal').modal('show');
+            var mapOptions = {
+                    center: new google.maps.LatLng(lat, lng),
+                    zoom: 18,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        });
+    })
+</script>
+{% endblock %}

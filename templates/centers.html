@@ -1,0 +1,22 @@
+<div class="col-md-10 offset-md-1 exam-centers">
+    <table class="table center-table">
+        <thead>
+        <tr>
+            <th scope="col">S.N.</th>
+            <th scope="col">Center</th>
+            <th scope="col">Address</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for item in data %}
+            <tr>
+                <td scope="row">{{  loop.index}}</td>
+                <td>{{ item['center'] }}</td>
+                <td>{{ item['center_address'] }}</a></td>
+            </tr>
+        {% endfor %}
+        
+        <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+</div>

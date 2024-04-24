@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block head %} <title>Grade 12 Examination Centers - 2081</title> {% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+            <h3 class="text-center"><u>Grade 12 Examination Centers - 2081 (Kathmandu)</u></h3>
+            <p class="text-center">Find exam centers</p>
+        <div class="row">
+            <div class="col-md-8 offset-md-3 search">
+              <form class="row g-3" id="search_form">
+                <div class="col-md-9">
+                  <label for="search" class="visually-hidden">School Name</label>
+                  <input type="text" class="form-control" id="search" placeholder="Search school or college name">
+                  <!-- Autocomplete dropdown -->
+                  <ul id="autocomplete" class="dropdown-menu mt-1" aria-labelledby="search"></ul> 
+                </div>
+               
+              
+              </form>
+            </div>
+
+
+        </div>
+    </div>
+
+    {% endblock %}
+
+{% block pagescripts %}
+<script>
+$(document).ready(function() {
+    var delayTimer; // Variable to hold the timer
+    
+    $("#search").on("input", function() {
+        clearTimeout(delayTimer); // Clear the previous timer
+        
+        var term = $(this).val();
+        if (term.length >= 2) {
+            // Set a new timer to delay the AJAX request by 500 milliseconds (half a second)
+            delayTimer = setTimeout(function() {
+                $.ajax({
+                    url: "/autocomplete",
+                    dataType: "json",
+                    data: {
+                        term: term
+                    },
+                    success: function(data) {
+                        var autocomplete = $("#autocomplete");
+                        autocomplete.empty();
+                        $.each(data, function(index, value) {
+                          
+                          autocomplete.append('<li><a class="dropdown-item" onclick="selectAutocomplete(\'' + value + '\','+ index + ')">' + value + '</a></li>');
+                        });
+
+                        if ( autocomplete.find('li').length >0)
+                          autocomplete.show();
+                    }
+                });
+            }, 500); // 500 milliseconds delay
+        } else {
+            $("#autocomplete").hide();
+        }
+    });
+});
+
+function selectAutocomplete(suggestion, _index) {
+    $("#search").val(suggestion);
+    $("#autocomplete").hide();
+    console.log('THe index', _index)
+
+    $.ajax({
+        url: "/school-exam-centers?scode="+_index,
+        dataType: "json",
+        beforeSend: function(){
+            $('.exam-centers').remove();
+        },  
+        success: function(response) {
+
+          $(".search").after(response.data);
+         
+        }
+    });
+
+
+    
+}
+</script>
+{% endblock %}
