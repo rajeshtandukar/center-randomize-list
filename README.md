@@ -95,10 +95,11 @@ python3 school_center.py sample_data/schools_grade12_2081.tsv sample_data/center
 To run on browser use the command
 
 ```bash
-$ python app.py   
+$ python3 app.py   
 ```
+ Browse the application at http://127.0.0.1:5000
 
-![Search college's exam centers](https://github.com/rajeshtandukar/center-randomize-list/images/search-college.png)
-![Search college's exam centers list](https://github.com/rajeshtandukar/center-randomize-list/images/college-centers.png)
-![Exam centers list](https://github.com/rajeshtandukar/center-randomize-list/images/exam-centers.png)
-![Exam centers list Googl Map](https://github.com/rajeshtandukar/center-randomize-list/images/center-map.png)
+![Search college's exam centers](https://github.com/rajeshtandukar/center-randomize-list/blob/main/images/center-map.png?raw=true)
+![Search college's exam centers list](https://github.com/rajeshtandukar/center-randomize-list/blob/main/images/college-centers.png?raw=true)
+![Exam centers list](https://github.com/rajeshtandukar/center-randomize-list/blob/main/images/exam-centers.png?raw=true)
+![Exam centers list Googl Map](https://github.com/rajeshtandukar/center-randomize-list/blob/main/images/center-map.png?raw=true)
