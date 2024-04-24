@@ -99,7 +99,7 @@ $ python3 app.py
 ```
  Browse the application at http://127.0.0.1:5000
 
-![Search college's exam centers](https://github.com/rajeshtandukar/center-randomize-list/blob/main/images/search-college?raw=true)
+![Search college's exam centers](https://github.com/rajeshtandukar/center-randomize-list/blob/main/images/search-college.png?raw=true)
 ![Search college's exam centers list](https://github.com/rajeshtandukar/center-randomize-list/blob/main/images/college-centers.png?raw=true)
 ![Exam centers list](https://github.com/rajeshtandukar/center-randomize-list/blob/main/images/exam-centers.png?raw=true)
 ![Exam centers list Googl Map](https://github.com/rajeshtandukar/center-randomize-list/blob/main/images/center-map.png?raw=true)
